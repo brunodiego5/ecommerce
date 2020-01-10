@@ -6,63 +6,35 @@ import './styles.css';
 
 export default class Main extends Component {
     state = {
-        products: [],
-        productInfo: {},
-        page: 1,
+        categories: []
     }
 
     /*executa qndo componente aparece em tela init() angular*/
     componentDidMount(){
-        this.loadProducts();
+        this.loadCategories();
         
     }
 
     /*arrow functions para acessar o this*/
-    loadProducts = async (page = 1) => {
-        const response = await api.get(`/products?page=${page}`);
+    loadCategories = async () => {
+        const response = await api.get('/categories');
 
-        const { docs, ...productInfo } = response.data; /* ... REST operation */
-        
-        this.setState({ products: docs, productInfo, page }); /*object short syntax */
+        this.setState({ categories: response.data }); /*object short syntax */
     };
 
-    prevPage = () => {
-        const { page } = this.state; /*desestruturação*/
-
-        if (page === 1) return; /*EXIT*/
-
-        const pageNumber = page - 1;
-
-        this.loadProducts(pageNumber);
-    }
-
-    nextPage = () => {
-        const { page, productInfo} = this.state; /*desestruturação*/
-
-        if (page === productInfo.pages) return; /*EXIT*/
-
-        const pageNumber = page + 1;
-
-        this.loadProducts(pageNumber);
-    }
-
     render() {
-        const { products, page, productInfo } = this.state; /*desestruturação*/
+        const { categories } = this.state; /*desestruturação*/
 
         return (
             <div className="product-list">
-                {products.map(product => (
-                    <article key={product._id}>
-                        <strong>{product.title}</strong>
-                        <p>{product.description}</p>
+                {categories.map(category => (
+                    <article key={category._id}>
+                        <strong>{category.title}</strong>
+                        <p>{category.description}</p>
 
-                        <Link to={`products/${product._id}`}>Acessar</Link>
+                        <Link to={`categories/${category._id}`}>Acessar</Link>
                     </article>
                 ))}
-                <div className="actions">
-                    <button disabled={page===1} onClick={this.prevPage}>Anterior</button>
-                    <button disabled={page===productInfo.pages} onClick={this.nextPage}>Próxima</button>
-                </div>
             </div>
         )
     }
