@@ -31,8 +31,10 @@ export default class Main extends Component {
                     <article key={category._id}>
                         <strong>{category.title}</strong>
                         <p>{category.description}</p>
-
-                        <Link to={`categories/${category._id}`}>Acessar</Link>
+                        <div className="product-img">
+                            <header style={{ backgroundImage: `url(${category.thumbnail_url})` }} />
+                            <Link to={`categories/${category._id}`}>Acessar</Link>
+                        </div>
                     </article>
                 ))}
             </div>

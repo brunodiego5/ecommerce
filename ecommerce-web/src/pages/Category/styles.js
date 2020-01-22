@@ -85,8 +85,12 @@ export const Container = styled.div`
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
       }
 
-      td.thumbnail_url {
+      td span.thumbnail_url {
         text-align: center;
+          width: 100%;
+          height: 120px;
+          background-size: cover;
+          border-radius: 4px;
       }
 
       td.edit {

@@ -80,7 +80,9 @@ export default function Categories() {
             <tr key={category._id}>
               <td className="title">{category.title}</td>
               <td className="description">{category.description}</td>
-              <td className="thumbnail_url">{category.thumbnail_url}</td>
+              <td>
+                <span className="thumbnail_url" style={{ backgroundImage: `url(${category.thumbnail_url})` }}></span>
+              </td>
               <td className="edit">
                 <Link
                   to={{

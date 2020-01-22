@@ -1,11 +1,19 @@
+div#div-top {
+    position: relative;
+}
+
 header#main-header {
-    height: 60px;
+    height: 120px;
     width: 100%;
-    background: #ee008a;
-    font-size: 18px;
+    background: #ee008b;
+    font-size: 22px;
     font-weight: bold;
     color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+/*azul #0195F0 
+  rosa #EE008B
+*/
